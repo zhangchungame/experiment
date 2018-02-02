@@ -25,4 +25,10 @@ public class StudentController {
         ModelAndView modelAndView=new ModelAndView("student/gujie_drag");
         return modelAndView;
     }
+
+    @RequestMapping("inputdata")
+    public ModelAndView inputData() {
+        ModelAndView modelAndView = new ModelAndView("student/gujie_inputData");
+        return modelAndView;
+    }
 }

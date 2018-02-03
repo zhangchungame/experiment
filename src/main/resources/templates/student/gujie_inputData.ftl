@@ -17,8 +17,9 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <iframe src="http://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=73e3ac5fc53c842a1e3f9631f1e3fa90&tvId=1442071809&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=100%&width=100%"
-                                frameborder="0" allowfullscreen="true" width="100%" height="600"></iframe>
+                        <video src="/image/gujie_video.mp4" controls="controls">
+                            您的浏览器不支持 video 标签。
+                        </video>
                     </div>
                 </div>
             </div>
@@ -30,22 +31,67 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-bordered">
+            <table class="table table-bordered" >
+                <thead>
                 <tr>
                     <th>P（kPa）</th>
                     <th>变形量（mm）</th>
                     <th>操作</th>
                 </tr>
-                <tr>
-                    <td><input type="text" id="addKPA"></td>
-                    <td><input type="text" id="addMM"></td>
-                    <td><button type="button" class="btn btn-default">添加</button> </td>
-                </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td><button type="button" class="btn btn-default del" >删除</button></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+
+                    <tr>
+                        <td><input type="text" id="addKPA"></td>
+                        <td><input type="text" id="addMM"></td>
+                        <td>
+                            <button type="button" class="btn btn-default" id="add">添加</button>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
         <div class="col-md-6">
-
+            <button type="button" class="btn btn-default" id="tijiao">提交</button>
         </div>
     </div>
 </div>
+<script>
+    $("#add").click(function () {
+        var kpa = $("#addKPA").val();
+        var mm = $("#addMM").val();
+        if (isRealNum(kpa) && isRealNum(mm)) {
+            var html="<tr>\n" +
+                    "                        <td>"+kpa+"</td>\n" +
+                    "                        <td>"+mm+"</td>\n" +
+                    "                        <td><button type=\"button\" class=\"btn btn-default del\" >删除</button></td>\n" +
+                    "                    </tr>";
+            $("#tableBody").append(html);
+            $("#addKPA").val("");
+            $("#addMM").val("");
+        } else {
+            alert("请输入数字");
+        }
+    })
+    $("#tableBody").on("click",".del",function () {
+        $(this).parent().parent().remove();
+    })
+    $("#tijiao").click(function () {
+        $("#tableBody").find("tr").each(function () {
+            $(this).find("td").each(function (i) {
+                if(i<2){
+                    console.log(i,$(this).text());
+                }
+            });
+        })
+        window.location.reload();
+    });
+</script>
 <#include "foot.ftl">

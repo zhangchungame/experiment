@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>用户登录</title>
+    <title>上海大学实验系统</title>
     <link rel="stylesheet" href="/plug/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/common.js"></script>
     <script src="/plug/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -28,7 +29,7 @@
                 <li class="active" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">固结实验 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">固结实验</a></li>
+                        <li><a href="/student/gujie">固结实验</a></li>
                     </ul>
                 </li>
             </ul>

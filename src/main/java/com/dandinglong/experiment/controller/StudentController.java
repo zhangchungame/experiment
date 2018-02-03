@@ -31,4 +31,9 @@ public class StudentController {
         ModelAndView modelAndView = new ModelAndView("student/gujie_inputData");
         return modelAndView;
     }
+    @RequestMapping("jiaoyan")
+    public ModelAndView jiaoyan(){
+        ModelAndView modelAndView = new ModelAndView("student/gujie_jiaoyan");
+        return modelAndView;
+    }
 }

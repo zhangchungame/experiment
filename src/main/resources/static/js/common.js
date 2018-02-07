@@ -9,3 +9,9 @@ function isRealNum(val){
         return false;
     }
 }
+
+function jumpUrl(page) {
+    var tmp=window.location.search.split("&");
+    tmp.push("page="+page);
+    window.location.href=window.location.pathname+"?"+tmp.join("&");
+}

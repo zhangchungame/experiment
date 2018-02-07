@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">班级</a>
+                <a href="/teacher/classList">班级</a>
             </li>
             <li>
                 <a href="#">学生</a>

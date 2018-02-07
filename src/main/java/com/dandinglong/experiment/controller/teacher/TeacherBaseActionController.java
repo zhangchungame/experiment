@@ -1,6 +1,7 @@
 package com.dandinglong.experiment.controller.teacher;
 
 
+import com.dandinglong.experiment.dao.PageInfo;
 import com.dandinglong.experiment.dto.MaClassInfo;
 import com.dandinglong.experiment.dto.MaTeacher;
 import com.dandinglong.experiment.service.TeacherBaseActionService;
@@ -44,6 +45,14 @@ public class TeacherBaseActionController {
         maClassInfo.setId(id);
         teacherBaseActionService.saveClassInfo(maClassInfo);
         response.sendRedirect("/teacher/classList");
+    }
+
+    @RequestMapping(value = "classList",method = RequestMethod.GET)
+    public ModelAndView classList(@RequestParam(value = "page",defaultValue = "1")int page){
+        PageInfo pageInfo=teacherBaseActionService.classList(page);
+        ModelAndView modelAndView=new ModelAndView("teacher/classList");
+        modelAndView.addObject("pageInfo",pageInfo);
+        return modelAndView;
     }
     @RequestMapping("test")
     public MaTeacher test(){

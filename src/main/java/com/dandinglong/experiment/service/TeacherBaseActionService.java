@@ -1,8 +1,10 @@
 package com.dandinglong.experiment.service;
 
 
+import com.dandinglong.experiment.dao.PageInfo;
 import com.dandinglong.experiment.dto.MaClassInfo;
 import com.dandinglong.experiment.mapper.MaClassInfoMapper;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -41,5 +43,17 @@ public class TeacherBaseActionService {
     public MaClassInfo findClassInfo(int id){
         MaClassInfo maClassInfo=maClassInfoMapper.selectByPrimaryKey(id);
         return maClassInfo;
+    }
+
+    public PageInfo classList(int page){
+        PageInfo pageInfo=new PageInfo();
+        Example example=new Example(MaClassInfo.class);
+        example.orderBy("id").desc();
+        RowBounds rowBounds=new RowBounds(page-1,20);
+        pageInfo.setList(maClassInfoMapper.selectByExampleAndRowBounds(example,rowBounds));
+        pageInfo.setCurrentPage(page);
+        int count=maClassInfoMapper.selectCountByExample(example);
+        pageInfo.setTotalPage((int)Math.ceil((double)count/20.0));
+        return pageInfo;
     }
 }

@@ -73,7 +73,7 @@ public class GujieService {
             MaGujie maGujie=list.get(0);
             maGujie.setUpdateTime(new Date());
             maGujie.setStep(2);
-            maGujie.setContent(JSON.toJSONString(kpaAndMms));
+            maGujie.setKpaMmJson(JSON.toJSONString(kpaAndMms));
             maGujieMapper.updateByPrimaryKey(maGujie);
         }else{
             throw new Exception("数据异常");

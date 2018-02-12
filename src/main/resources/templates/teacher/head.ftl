@@ -32,11 +32,11 @@
                 <a href="#">固结实验</a>
             </li>
             <li>
-                <a href="#table-menu" class="nav-header" data-toggle="collapse"><i class="icon-table"></i>餐桌
+                <a href="#table-menu" class="nav-header" data-toggle="collapse"><i class="icon-table"></i>固结实验
                 </a>
             </li>
             <ul id="table-menu" class="nav nav-list collapse">
-                <li><a href="/WirelessOrder/table.do?flag=table">餐桌管理</a></li>
+                <li><a href="/WirelessOrder/table.do?flag=table">初始化数据</a></li>
             </ul>
         </ul>
     </div>

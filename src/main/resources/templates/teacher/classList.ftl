@@ -31,6 +31,7 @@
                     <td>
                         <a class="btn btn-primary" href="/teacher/createClass?id=${item.id}">编辑</a>
                         <button class="btn btn-primary delClass" type="button" classId="${item.id}">删除</button>
+                        <a class="btn btn-primary " type="button" href="/teacher/gujie/initData?classId=${item.id}">初始化数据</a>
                     </td>
                 </tr>
                 </#list>

@@ -9,7 +9,7 @@ public class MaGujie {
     private String studentNo;
     private int step;
     private int status;
-    private String content;
+    private String kpaMmJson;
     private Date updateTime;
 
     public int getId() {
@@ -44,12 +44,12 @@ public class MaGujie {
         this.status = status;
     }
 
-    public String getContent() {
-        return content;
+    public String getKpaMmJson() {
+        return kpaMmJson;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setKpaMmJson(String kpaMmJson) {
+        this.kpaMmJson = kpaMmJson;
     }
 
     public Date getUpdateTime() {

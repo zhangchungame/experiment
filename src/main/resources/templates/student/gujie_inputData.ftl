@@ -11,7 +11,7 @@
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseTwo">
-                            这里放视频或图片，点击可折叠
+                            这里是视频，点击可折叠
                         </a>
                     </h4>
                 </div>
@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-md-12" style="border-bottom: 2px solid black;margin-top: 10px;margin-bottom: 10px"></div>
     </div>
-    <div class="row">
+    <div class="row" style="padding-bottom: 200px;">
         <div class="col-md-6">
             <table class="table table-bordered" >
                 <thead>
@@ -40,11 +40,6 @@
                 </tr>
                 </thead>
                 <tbody id="tableBody">
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td><button type="button" class="btn btn-default del" >删除</button></td>
-                    </tr>
                 </tbody>
                 <tfoot>
 
@@ -84,14 +79,37 @@
         $(this).parent().parent().remove();
     })
     $("#tijiao").click(function () {
+        var tijiao=$(this);
+        tijiao.attr("disabled",true);
         $("#tableBody").find("tr").each(function () {
+            var postData=[];
             $(this).find("td").each(function (i) {
-                if(i<2){
-                    console.log(i,$(this).text());
+                tmp={};
+                if(i==0){
+                    tmp['kPa']=$(this).text();
+                }else if(i==1){
+                    tmp['mm']=$(this).text();
                 }
+                postData.push(tmp);
+            });
+            $.ajax({
+                type:"POST",
+                url:"/student/inputDataFinish",
+                contentType:"application/json;charset=utf-8",
+                data: JSON.stringify(postData),
+                success:function (data) {
+                    if(data.code==200){
+                        alert("成功");
+                        window.location.reload();
+                    }else{
+                        alert(data.msg);
+                    }
+                    tijiao.removeAttr("disabled");
+                }
+
             });
         })
-        window.location.reload();
+//        window.location.reload();
     });
 </script>
 <#include "foot.ftl">

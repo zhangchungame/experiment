@@ -1,6 +1,7 @@
 package com.dandinglong.experiment.controller;
 
 
+import com.dandinglong.experiment.dto.MaStudent;
 import com.dandinglong.experiment.dto.MaTeacher;
 import com.dandinglong.experiment.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,16 @@ public class LoginController {
     @RequestMapping(value = "student",method = RequestMethod.POST)
     public void loginStudent(@RequestParam(name = "studentNo",required = true)String studentNo,
                              @RequestParam(name = "password",required = true)String password,
-                             HttpServletRequest request, HttpServletResponse response){
+                             HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session=request.getSession();
+        try{
+            MaStudent maStudent=loginService.studentLogin(studentNo,password);
+            session.setAttribute("maStudent",maStudent);
+            response.sendRedirect("/student/");
+        }catch (Exception e){
+            session.setAttribute("loginErrorMsg",e.getMessage());
+            response.sendRedirect("/login/");
+        }
 
     }
     @RequestMapping(value = "teacher",method = RequestMethod.POST)

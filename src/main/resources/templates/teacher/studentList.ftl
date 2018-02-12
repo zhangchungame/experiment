@@ -8,29 +8,33 @@
         <div class="col-md-10">
         </div>
         <div class="col-md-2">
-            <a class="btn btn-primary" type="button" href="/teacher/createClass">新增</a>
+            <a class="btn btn-primary" type="button" href="/teacher/batchCreateStudent">新增</a>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <td>班级名</td>
-                        <td>年级</td>
-                        <td>学生数</td>
-                        <td>操作</td>
-                    </tr>
+                <tr>
+                    <td>年级</td>
+                    <td>班级名</td>
+                    <td>姓名</td>
+                    <td>学号</td>
+                    <td>密码</td>
+                    <td>操作</td>
+                </tr>
                 </thead>
                 <tbody>
                 <#list pageInfo.list as item>
                 <tr>
-                    <td>${item.className}</td>
                     <td>${item.grad}</td>
-                    <td>${item.studentNum}</td>
+                    <td>${item.className}</td>
+                    <td>${item.name}</td>
+                    <td>${item.studentNo}</td>
+                    <td>${item.password}</td>
                     <td>
-                        <a class="btn btn-primary" href="/teacher/createClass?id=${item.id}">编辑</a>
-                        <button class="btn btn-primary delClass" type="button" classId="${item.id}">删除</button>
+                        <a class="btn btn-primary" href="/teacher/createStudent?id=${item.id}">编辑</a>
+                        <button class="btn btn-primary delStudent" type="button" studentId="${item.id}">删除</button>
                     </td>
                 </tr>
                 </#list>
@@ -50,7 +54,7 @@
 <script type='text/javascript'>
     var options = {
         currentPage: ${pageInfo.currentPage},
-        totalPages: <#if pageInfo.totalPage==0>   1 <#else>  ${pageInfo.totalPage}</#if>,
+    totalPages: <#if pageInfo.totalPage==0>   1 <#else>  ${pageInfo.totalPage}</#if>,
         onPageClicked: function(e,originalEvent,type,page){
             jumpUrl(page);
             return;
@@ -62,12 +66,12 @@
 
     $('#example').bootstrapPaginator(options);
 
-    $(".delClass").click(function () {
-        var classId=$(this).attr("classId")
+    $(".delStudent").click(function () {
+        var studentId=$(this).attr("studentId")
         var thisObj=$(this);
         $.ajax({
             type: "DELETE",
-            url: "/teacher/createClass?id="+classId,
+            url: "/teacher/createStudent?id="+studentId,
             success: function(data){
                 if(data.code==200){
                     thisObj.parent().parent().remove();

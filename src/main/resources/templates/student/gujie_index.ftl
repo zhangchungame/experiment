@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <button type="button" class="btn btn-primary">开始实验</button>
+                <a href="/student/gujie" type="button" class="btn btn-primary">开始实验</a>
             </div>
         </div>
         <div class="col-md-1"></div>

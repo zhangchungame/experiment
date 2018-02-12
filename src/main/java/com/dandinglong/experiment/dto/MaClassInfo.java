@@ -7,7 +7,8 @@ public class MaClassInfo {
     @Id
     private int id;
     private String className;
-    private String grade;
+    private String grad;
+    private int studentNum;
     private Date insertTime;
     private Date updateTime;
 
@@ -27,12 +28,20 @@ public class MaClassInfo {
         this.className = className;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getGrad() {
+        return grad;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setGrad(String grad) {
+        this.grad = grad;
+    }
+
+    public int getStudentNum() {
+        return studentNum;
+    }
+
+    public void setStudentNum(int studentNum) {
+        this.studentNum = studentNum;
     }
 
     public Date getInsertTime() {

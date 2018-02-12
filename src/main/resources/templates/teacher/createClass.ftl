@@ -8,7 +8,7 @@
             <input type="hidden" name="id" value="${maClassInfo.id!}">
             <div class="form-group">
                 <label for="exampleInputEmail1">年级</label>
-                <input type="text" id="grade" name="grade" class="form-control" placeholder="请输入年级" value="${maClassInfo.grade!}">
+                <input type="text" id="grad" name="grad" class="form-control" placeholder="请输入年级" value="${maClassInfo.grad!}">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">班级名</label>
@@ -20,7 +20,7 @@
 </div>
 <script>
     $("#baocun").click(function () {
-        if($("#grade").val()!="" &&$("#className")!=""){
+        if($("#grad").val()!="" &&$("#className")!=""){
             $("#form1").submit();
         }else{
             alert("参数为空");

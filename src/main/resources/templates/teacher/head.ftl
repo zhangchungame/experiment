@@ -26,7 +26,7 @@
                 <a href="/teacher/classList">班级</a>
             </li>
             <li>
-                <a href="#">学生</a>
+                <a href="/teacher/studentList">学生</a>
             </li>
             <li>
                 <a href="#">固结实验</a>

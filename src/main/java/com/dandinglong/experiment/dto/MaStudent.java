@@ -1,6 +1,7 @@
 package com.dandinglong.experiment.dto;
 
 import javax.persistence.Id;
+import java.util.Date;
 
 public class MaStudent {
     @Id
@@ -8,8 +9,10 @@ public class MaStudent {
     private String studentNo;
     private String name;
     private String password;
-    private int banjiId;
-    private String graduation;
+    private int classId;
+    private String grad;
+    private String className;
+    private Date lastLoginTime;
 
     public int getId() {
         return id;
@@ -43,19 +46,35 @@ public class MaStudent {
         this.password = password;
     }
 
-    public int getBanjiId() {
-        return banjiId;
+    public int getClassId() {
+        return classId;
     }
 
-    public void setBanjiId(int banjiId) {
-        this.banjiId = banjiId;
+    public void setClassId(int classId) {
+        this.classId = classId;
     }
 
-    public String getGraduation() {
-        return graduation;
+    public String getGrad() {
+        return grad;
     }
 
-    public void setGraduation(String graduation) {
-        this.graduation = graduation;
+    public void setGrad(String grad) {
+        this.grad = grad;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 }

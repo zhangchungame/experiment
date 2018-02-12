@@ -17,10 +17,9 @@ public class TestController {
     public ModelAndView test(){
         ModelAndView modelAndView=new ModelAndView("test");
         MaStudent maStudent=new MaStudent();
-        maStudent.setBanjiId(2123);
+//        maStudent.setBanjiId(2123);
         maStudent.setPassword("sdf");
         maStudent.setStudentNo("sdf");
-        maStudent.setGraduation("2019");
         maStudent.setName("zc");
         maStudentMapper.insert(maStudent);
         maStudent=maStudentMapper.selectByPrimaryKey(maStudent.getId());

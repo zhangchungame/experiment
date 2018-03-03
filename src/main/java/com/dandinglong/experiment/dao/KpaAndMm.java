@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class KpaAndMm {
     private BigDecimal kPa;
+    private BigDecimal weiyimm;
     private BigDecimal mm;
 
     public BigDecimal getkPa() {
@@ -20,5 +21,13 @@ public class KpaAndMm {
 
     public void setMm(BigDecimal mm) {
         this.mm = mm;
+    }
+
+    public BigDecimal getWeiyimm() {
+        return weiyimm;
+    }
+
+    public void setWeiyimm(BigDecimal weiyimm) {
+        this.weiyimm = weiyimm;
     }
 }

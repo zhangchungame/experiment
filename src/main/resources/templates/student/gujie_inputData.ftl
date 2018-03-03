@@ -30,11 +30,12 @@
         <div class="col-md-12" style="border-bottom: 2px solid black;margin-top: 10px;margin-bottom: 10px"></div>
     </div>
     <div class="row" style="padding-bottom: 200px;">
-        <div class="col-md-6">
+        <div class="col-md-10">
             <table class="table table-bordered" >
                 <thead>
                 <tr>
                     <th>P（kPa）</th>
+                    <th>位移计读数(mm)</th>
                     <th>变形量（mm）</th>
                     <th>操作</th>
                 </tr>
@@ -45,6 +46,7 @@
 
                     <tr>
                         <td><input type="text" id="addKPA"></td>
+                        <td><input type="text" id="addweiyiMM"></td>
                         <td><input type="text" id="addMM"></td>
                         <td>
                             <button type="button" class="btn btn-default" id="add">添加</button>
@@ -53,7 +55,7 @@
                 </tfoot>
             </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-2">
             <button type="button" class="btn btn-default" id="tijiao">提交</button>
         </div>
     </div>
@@ -61,16 +63,19 @@
 <script>
     $("#add").click(function () {
         var kpa = $("#addKPA").val();
+        var weiyimm = $("#addweiyiMM").val();
         var mm = $("#addMM").val();
         if (isRealNum(kpa) && isRealNum(mm)) {
             var html="<tr>\n" +
                     "                        <td>"+kpa+"</td>\n" +
+                    "                        <td>"+weiyimm+"</td>\n" +
                     "                        <td>"+mm+"</td>\n" +
                     "                        <td><button type=\"button\" class=\"btn btn-default del\" >删除</button></td>\n" +
                     "                    </tr>";
             $("#tableBody").append(html);
             $("#addKPA").val("");
             $("#addMM").val("");
+            $("#addweiyiMM").val("");
         } else {
             alert("请输入数字");
         }
@@ -81,35 +86,42 @@
     $("#tijiao").click(function () {
         var tijiao=$(this);
         tijiao.attr("disabled",true);
+        var postData=[];
         $("#tableBody").find("tr").each(function () {
-            var postData=[];
+            tmp={};
             $(this).find("td").each(function (i) {
-                tmp={};
                 if(i==0){
                     tmp['kPa']=$(this).text();
                 }else if(i==1){
+                    tmp['weiyimm']=$(this).text();
+                }else if(i==2){
                     tmp['mm']=$(this).text();
                 }
-                postData.push(tmp);
             });
-            $.ajax({
-                type:"POST",
-                url:"/student/inputDataFinish",
-                contentType:"application/json;charset=utf-8",
-                data: JSON.stringify(postData),
-                success:function (data) {
-                    if(data.code==200){
-                        alert("成功");
-                        window.location.reload();
-                    }else{
-                        alert(data.msg);
-                    }
-                    tijiao.removeAttr("disabled");
-                }
-
-            });
+            postData.push(tmp);
         })
+        postData.sort(mysort);
+        $.ajax({
+            type:"POST",
+            url:"/student/inputDataFinish",
+            contentType:"application/json;charset=utf-8",
+            data: JSON.stringify(postData),
+            success:function (data) {
+                if(data.code==200){
+                    alert("成功");
+                    window.location.reload();
+                }else{
+                    alert(data.msg);
+                }
+                tijiao.removeAttr("disabled");
+            }
+
+        });
 //        window.location.reload();
     });
+    function  mysort(a,b) {
+        return a['kPa']-b['kPa'];
+
+    }
 </script>
 <#include "foot.ftl">

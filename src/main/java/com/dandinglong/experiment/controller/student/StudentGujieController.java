@@ -1,6 +1,8 @@
 package com.dandinglong.experiment.controller.student;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.dandinglong.experiment.dao.KpaAndMm;
 import com.dandinglong.experiment.dao.RespRestfulDto;
 import com.dandinglong.experiment.dto.MaGujie;
@@ -20,7 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/student")
-public class GujieController {
+public class StudentGujieController {
     @Autowired
     private GujieService gujieService;
 
@@ -60,6 +62,9 @@ public class GujieController {
                 break;
             case 2:
                 modelAndView.setViewName("student/gujie_jiaoyan");
+                List<KpaAndMm> kpaAndMms= JSONArray.parseArray(maGujie.getKpaMmJson(),KpaAndMm.class);
+                modelAndView.addObject("kpaAndMms",kpaAndMms);
+                modelAndView.addObject("initData",gujieService.findInitData(maStudent.getClassId()));
                 break;
             default:
                 break;

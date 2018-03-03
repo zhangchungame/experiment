@@ -38,6 +38,10 @@
             <ul id="table-menu" class="nav nav-list collapse">
                 <li><a href="/WirelessOrder/table.do?flag=table">初始化数据</a></li>
             </ul>
+
+            <li>
+                <a href="/login/teacher/loginout">登出</a>
+            </li>
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->

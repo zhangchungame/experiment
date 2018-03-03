@@ -15,19 +15,35 @@
                 <table class="table table-bordered">
                     <tr>
                         <td>密度</td>
-                        <td>1</td>
+                        <td>${initData.midu}</td>
                     </tr>
                     <tr>
                         <td>含水量（%）</td>
-                        <td>1</td>
+                        <td>${initData.hanshuiliang}</td>
                     </tr>
                     <tr>
                         <td>土比重</td>
-                        <td>1</td>
+                        <td>${initData.tulibizhong}</td>
                     </tr>
                     <tr>
                         <td>初始高度</td>
-                        <td>1</td>
+                        <td>${initData.chushigaodu}</td>
+                    </tr>
+                    <tr>
+                        <td>a1-2</td>
+                        <td><input type="text" id="a12" value=""> </td>
+                    </tr>
+                    <tr>
+                        <td>Cc</td>
+                        <td><input type="text" id="cc" value=""> </td>
+                    </tr>
+                    <tr>
+                        <td>λ</td>
+                        <td><input type="text" id="lambda" value=""> </td>
+                    </tr>
+                    <tr>
+                        <td>k</td>
+                        <td><input type="text" id="k" value=""> </td>
                     </tr>
                 </table>
             </div>
@@ -42,6 +58,7 @@
                 <thead>
                 <tr>
                     <th>P（kPa）</th>
+                    <th>位移计读数(mm)</th>
                     <th>变形量（mm）</th>
                     <th>e</th>
                     <th>压缩系数</th>
@@ -49,41 +66,16 @@
                 </tr>
                 </thead>
                 <tbody id="tableBody">
+                <#list kpaAndMms as item>
                 <tr>
-                    <td>1</td>
-                    <td>1</td>
+                    <td>${item.kPa}</td>
+                    <td>${item.weiyimm}</td>
+                    <td>${item.mm}</td>
                     <td><input type="text" class="input"></td>
                     <td><input type="text" class="input"></td>
                     <td><input type="text" class="input"></td>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                    <td><input type="text" class="input"></td>
-                </tr>
+                </#list>
                 </tbody>
             </table>
         </div>

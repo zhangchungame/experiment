@@ -42,6 +42,18 @@ public class LoginController {
         }
 
     }
+    @RequestMapping(value = "student/loginout")
+    public void loginoutStudent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session=request.getSession();
+        try{
+            session.setAttribute("maStudent",null);
+            response.sendRedirect("/login/");
+        }catch (Exception e){
+            session.setAttribute("loginErrorMsg",e.getMessage());
+            response.sendRedirect("/login/");
+        }
+
+    }
     @RequestMapping(value = "teacher",method = RequestMethod.POST)
     public void loginTeacher(@RequestParam(name = "account",required = true)String account,
                              @RequestParam(name = "password",required = true)String password,
@@ -55,5 +67,18 @@ public class LoginController {
             session.setAttribute("loginErrorMsg",e.getMessage());
             response.sendRedirect("/login/");
         }
+    }
+
+    @RequestMapping(value = "teacher/loginout")
+    public void loginoutTeacher(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session=request.getSession();
+        try{
+            session.setAttribute("maTeacher",null);
+            response.sendRedirect("/login/");
+        }catch (Exception e){
+            session.setAttribute("loginErrorMsg",e.getMessage());
+            response.sendRedirect("/login/");
+        }
+
     }
 }
